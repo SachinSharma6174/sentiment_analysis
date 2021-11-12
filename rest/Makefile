@@ -1,5 +1,5 @@
-VERSION=v4
-DOCKERUSER=dirkcgrunwald
+VERSION=v1
+DOCKERUSER=sachinsharma6174
 
 build:
 	docker build -f Dockerfile-rest -t sentiment-rest .
