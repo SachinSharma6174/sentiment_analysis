@@ -1,12 +1,10 @@
 FROM dirkcgrunwald/flair:latest
 
-RUN pip3 install pika redis requests
+RUN pip3 install pika redis requests jsonpickle
 
 WORKDIR /srv
 
 COPY worker-server.py /srv
-
-COPY env-file /srv
 
 ENTRYPOINT [ "python3" ]
 

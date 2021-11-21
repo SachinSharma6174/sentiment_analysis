@@ -21,30 +21,20 @@ classifier = TextClassifier.load('sentiment')
 
 hostname = platform.node()
 
-##
-## Configure test vs. production
-##
-#redisHost = os.getenv("REDIS_HOST") or "localhost"
-#rabbitMQHost = os.getenv("RABBITMQ_HOST") or "localhost"
-redisHost='10.1.0.15'
-rabbitMQHost='10.1.0.19'
+redisHost = os.getenv("REDIS_HOST") or "localhost"
+rabbitMQHost = os.getenv("RABBITMQ_HOST") or "localhost"
 
 print(f"Connecting to rabbitmq({rabbitMQHost}) and redis({redisHost})")
 
-##
-## Set up redis connections
-##
+
 db = redis.Redis(host=redisHost)                                                                           
 
-##
-## Set up rabbitmq connection
-##
 rabbitMQ = pika.BlockingConnection(
         pika.ConnectionParameters(host=rabbitMQHost))
 rabbitMQChannel = rabbitMQ.channel()
 
-# rabbitMQChannel.queue_declare(queue='toWorker')
-# rabbitMQChannel.exchange_declare(exchange='logs', exchange_type='topic')
+rabbitMQChannel.queue_declare(queue='toWorker')
+rabbitMQChannel.exchange_declare(exchange='logs', exchange_type='topic')
 infoKey = f"{platform.node()}.worker.info"
 debugKey = f"{platform.node()}.worker.debug"
 

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: worker
-        image: sachinsharma6174/sentiment-worker:v1
+        image: sachinsharma6174/sentiment-worker:v2
         env:
         - name: REDIS_HOST
           value: redis

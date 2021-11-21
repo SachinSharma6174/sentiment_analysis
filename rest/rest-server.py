@@ -22,7 +22,7 @@ rabbitMQHost = os.getenv("RABBITMQ_HOST") or "localhost"
 #      port= '6379')
 
 redis = redis.Redis(
-     host= 'localhost',
+     host= redisHost,
      port= '6379')
 
 

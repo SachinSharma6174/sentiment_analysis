@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: rest
-        image: sachinsharma6174/sentiment-rest:v1
+        image: sachinsharma6174/sentiment-rest:3
         env:
         - name: REDIS_HOST
           value: redis
